@@ -1,0 +1,18 @@
+#!/bin/sh -l
+# FILENAME:  rnn_exp32b.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=24:00:00
+#PBS -N rnn_exp32
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd $RCAC_SCRATCH
+cd GraphDeepLearning3N2V/GraphDeepLearning/pylearn2/experiments/tests/
+module load python
+unset DISPLAY
+
+time python rnnExperiments2.py $nettype $mem $prtype $singlepr $test $bias $deg $limit $summ $weight $nodeg $aug $rinit $usepr $gpu $trial $fold

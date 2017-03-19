@@ -1,0 +1,18 @@
+#!/bin/sh -l
+# FILENAME:  lstm2_big.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=10
+#PBS -l walltime=32:00:00
+#PBS -N lstm2_big
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd /home/moore269/TrajectoryRNN/blocks-char-rnn-master/
+module load python
+unset DISPLAY
+
+time python train.py rnn 100 1 0 0.8 9223372036854775807 m1 four_sq
+

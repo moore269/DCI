@@ -1,0 +1,17 @@
+#!/bin/sh -l
+# FILENAME:  lstm2predict.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=300:00:00
+#PBS -N lstm2predict
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd /home/moore269/lstm2/blocks-char-rnn-master
+module load python
+unset DISPLAY
+
+time python predict.py 10000

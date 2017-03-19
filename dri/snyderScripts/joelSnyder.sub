@@ -1,0 +1,20 @@
+#!/bin/sh -l
+# FILENAME:  joel.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=10
+#PBS -l walltime=40:00:00
+#PBS -N run_joel
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd $RCAC_SCRATCH
+cd Joel
+#module gcc
+unset DISPLAY
+
+#make ScalableRelationalLearning
+time ./bin/ScalableRelationalLearning -d $data -t 10 -m -n $inputtype
+

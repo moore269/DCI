@@ -1,0 +1,17 @@
+#!/bin/sh -l
+# FILENAME:  rnn_exp2.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=20
+#PBS -l walltime=200:00:00
+#PBS -N rnn_exp2
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd /home/moore269/GraphDeepLearning/pylearn2/experiments/tests
+module load python
+unset DISPLAY
+
+time python rnnExperiments.py $nettype $mem $prtype $singlepr $test $bias $deg $limit $summ $weight $nodeg

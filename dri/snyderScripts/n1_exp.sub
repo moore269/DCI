@@ -1,0 +1,17 @@
+#!/bin/sh -l
+# FILENAME:  n1_exp.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=300:00:00
+#PBS -N n1_exp
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd /home/moore269/GraphDeepLearning/pylearn2/experiments/tests
+module load python
+unset DISPLAY
+
+time python n1.py $test

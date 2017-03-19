@@ -1,0 +1,20 @@
+#!/bin/sh -l
+# FILENAME:  joelHogun.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=10
+#PBS -l walltime=4:00:00
+#PBS -N run_joel_hogun
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd $RCAC_SCRATCH
+cd JoelRice
+module load gcc/5.2.0
+unset DISPLAY
+
+#make ScalableRelationalLearning
+time ./bin/ScalableRelationalLearning -d facebook_long_filtered -t 20 -m
+

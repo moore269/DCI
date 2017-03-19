@@ -1,0 +1,18 @@
+#!/bin/sh -l
+# FILENAME:  n1_exp.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=1:00:00
+#PBS -N lstm2_exp
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd /home/moore269/TrajectoryRNN/blocks-char-rnn-master/
+module load python
+unset DISPLAY
+
+time python train.py $rnn_type $hidden_size $num_layer $dropout $train_size $transition $mod $data
+

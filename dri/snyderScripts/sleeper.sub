@@ -1,0 +1,18 @@
+#!/bin/sh -l
+# FILENAME:  sleeper.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=100:00:00
+#PBS -N sleeper
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd $RCAC_SCRATCH
+cd jobs
+
+module load python
+unset DISPLAY
+
+time python sleeper.py

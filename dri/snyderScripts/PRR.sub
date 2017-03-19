@@ -1,0 +1,18 @@
+#!/bin/sh -l
+# FILENAME:  PRR_2.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=12:00:00
+#PBS -N PRR_2
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+cd $RCAC_SCRATCH
+cd GraphDeepLearning3/GraphDeepLearning/pylearn2/experiments/tests
+module load python
+unset DISPLAY
+
+time python personalizedPageRank.py $dataset $trial $fold $prtype
+

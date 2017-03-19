@@ -1,0 +1,18 @@
+#!/bin/sh -l
+# FILENAME:  rnn_hogun_time.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=50:00:00
+#PBS -N rnn_hogun_time
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd $RCAC_SCRATCH
+cd TimeSeriesRNN/rnn_timeseriesgraph/main/
+module load anaconda
+unset DISPLAY
+
+time python arg_rnn_classifier_with_attr.py --dataset $data --nclasses $nclasses --dntypeoption $nn --pooling $pool --rinit $rinit --neighbsum $neighbavg --perfectneighbors $pneighb --iterepoch $iterepoch --trial $trial 

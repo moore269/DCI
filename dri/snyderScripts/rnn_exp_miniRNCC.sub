@@ -1,0 +1,17 @@
+#!/bin/sh -l
+# FILENAME:  rnn_exp_miniRNCC.sub
+
+#PBS -V
+#PBS -l nodes=1:ppn=10
+#PBS -N rnn_exp_miniRNCC
+#PBS -l naccesspolicy=shared
+
+# Print the hostname of the compute node on which this job is running.
+/bin/hostname
+
+cd $RCAC_SCRATCH
+cd GraphDeepLearningMiniRNCC/GraphDeepLearning/dri/experiments
+module load anaconda
+unset DISPLAY
+
+time python rnnExperimentsPerTrial.py $nettype $mem $minidim $prtype $singlepr $test $bias $deg $limit $weight $nodeg $aug $rinit $usepr $pur $pro $lh $lhr $chr $gpu $trial $fold
